@@ -1,6 +1,3 @@
-#node modules
-node_modules/
-
 #Build directoreis
 build/
 dist/
