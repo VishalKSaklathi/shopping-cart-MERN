@@ -1,6 +1,7 @@
 #Build directoreis
 build/
 dist/
+node_modules/
 
 #env variables
 **/.env
