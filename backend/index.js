@@ -10,13 +10,13 @@ const cartRoutes = require('./routes/cartRoutes'); // assuming cartRoutes.js
 
 const app = express();
 
-app.use(cors(
-    {
-        origin: "https://shopping-cart-frontend-kappa.vercel.app",
-        methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
-        credentials: true
-    }
-));
+app.use(cors({
+    origin: 'https://shopping-cart-frontend-kappa.vercel.app',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
+}));
+
 // app.options('*', cors({
 //     origin: ["http://localhost:5173", "https://shopping-cart-frontend-kappa.vercel.app"],
 //     credentials: true,
