@@ -1,14 +1,15 @@
-
-import express from 'express';
-import cors from 'cors';
-import cookieParser from 'cookie-parser'
+import db from './db.mjs'
 import authRoutes from './routes/authRoutes.mjs'
 import razorPayments from './routes/razorPayments.mjs'
-import db from './db.mjs'
+import cookieParser from 'cookie-parser'
+import express from 'express';
+import cors from 'cors';
+
 // import bodyParser from 'body-parser';
 // const { json } = bodyParser;
 
 const app = express();
+
 app.use(cookieParser())
 app.use(cors(
     {
@@ -79,15 +80,15 @@ app.delete('/api/cart/:productID', (req, res) => {
     });
 });
 
-//i have to create another endpoint to delete all Items related to userID
-
-const PORT = process.env.PORT || 5000;
-
 app.get('/', (req, res) => {
     res.send('Hello from Vercel backend!');
 });
+//i have to create another endpoint to delete all Items related to userID
+
+// const PORT = process.env.PORT || 5000;
+
 
 //process.env.PORT
-app.listen(PORT, () => {
-    console.log(`Server running on http://127.0.0.1:${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server running on http://127.0.0.1:${PORT}`);
+// });
