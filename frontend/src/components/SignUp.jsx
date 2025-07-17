@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/useAuth'
 
 function SignUp() {
@@ -11,7 +11,7 @@ function SignUp() {
         address: '',
         email: ''
     });
-
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     const { setActiveTab } = useAuth();
     const [tempPassword, setTempPassword] = useState('');
     const [error, setError] = useState('');
@@ -41,7 +41,7 @@ function SignUp() {
         }
         // Simulate user creation
         console.log('User created:', values)
-        fetch('http://localhost:5000/api/auth/signup', { //API request to backend isn't working
+        fetch(`${BASE_URL}/api/auth/signup`, { //API request to backend isn't working
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(values)

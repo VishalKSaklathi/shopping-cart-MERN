@@ -14,6 +14,7 @@ function SingleProductView() {
     const [productDetails, setProductDetails] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     const handleAddToCart = () => {
         if (!isAuth) {
@@ -21,7 +22,7 @@ function SingleProductView() {
             alert('Login to add items to cart!!!');
         } else {
             console.log(`Added ${quantity} items of ${productDetails.title} to cart`);
-            fetch('http://localhost:5000/api/cart', { //API request to backend isn't working
+            fetch(`${BASE_URL}/api/cart`, { //API request to backend isn't working
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

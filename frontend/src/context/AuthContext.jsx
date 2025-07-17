@@ -6,11 +6,12 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [activeTab, setActiveTab] = useState('login');
     // const [loading, setLoading] = useState(true);
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/auth/check', {
+                const res = await fetch(`${BASE_URL}/api/auth/check`, {
                     method: 'GET',
                     credentials: 'include'
                 });
@@ -26,11 +27,11 @@ export const AuthProvider = ({ children }) => {
             }
         };
         checkAuth();
-    }, []);
+    }, [BASE_URL]);
     //logout handle
     const logout = async () => {
         try {
-            await fetch('http://localhost:5000/api/auth/logout', {
+            await fetch(`${BASE_URL}/api/auth/logout`, {
                 method: 'POST',
                 credentials: 'include'
             });

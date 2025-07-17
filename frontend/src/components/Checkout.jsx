@@ -6,6 +6,8 @@ import {
 } from 'react-bootstrap';
 
 function Checkout() {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
     const { count, cartItems } = useCart();
     const { user } = useAuth();
     const [amount, setAmount] = useState(0);
@@ -30,7 +32,7 @@ function Checkout() {
         // e.preventDefault();
         // Create order by calling the server endpoint
         console.log(`Transactioning amount of value ${amount}`)
-        const response = await fetch('http://localhost:5000/api/payment/create-order', {
+        const response = await fetch(`${BASE_URL}/api/payment/create-order`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +48,7 @@ function Checkout() {
             name: 'Your Company Name',
             description: 'Test Transaction',
             order_id: order.id, // This is the order_id created in the backend
-            callback_url: 'http://localhost:5173/payment-success', // Your success URL
+            callback_url: `${CLIENT_URL}/payment-success`, // Your success URL
             prefill: {
                 name: `${formData.firstName} ${formData.lastName}`,
                 email: formData.email,
@@ -58,7 +60,7 @@ function Checkout() {
             handler: function (response) {
                 // console.log("Payment success:", response);
                 // window.location.href = '/payment-success';  // React route
-                fetch('http://localhost:5000/api/payment/verify-payment', {
+                fetch(`${BASE_URL}/api/payment/verify-payment`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -72,7 +74,7 @@ function Checkout() {
                     .then(data => {
                         if (data.status === 'ok') {
                             //i have to call a functin ar something taht directs to backend
-                            fetch('http://localhost:5000/api/payment/clear-cart', {
+                            fetch(`${BASE_URL}/api/payment/clear-cart`, {
                                 method: 'POST',
                                 credentials: 'include',
                                 headers: {

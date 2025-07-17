@@ -12,6 +12,7 @@ function Cart() {
     const [totalAmount, setTotalAmount] = useState(0);
     const { count } = useCart();
     const { user } = useAuth();
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         fetchCartItems();
@@ -19,7 +20,7 @@ function Cart() {
 
     // Update Quantity
     const handleUpdate = (id, newQty) => {
-        fetch(`https://shopping-cart-frontend-kappa.vercel.app/api/cart/${id}`, {
+        fetch(`${BASE_URL}/api/cart/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ quantity: newQty, userID: user.userID }),
@@ -46,7 +47,7 @@ function Cart() {
 
     // Remove Item
     const handleRemove = (id) => {
-        fetch(`http://localhost:5000/api/cart/${id}`, {
+        fetch(`${BASE_URL}/api/cart/${id}`, {
             method: "DELETE",
         })
             .then(res => res.json())

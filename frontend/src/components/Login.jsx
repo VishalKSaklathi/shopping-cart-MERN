@@ -8,6 +8,7 @@ function Login() {
     const [values, setValues] = useState({ email: '', pass: '' });
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -26,7 +27,7 @@ function Login() {
 
         try {
             const res = await fetch(
-                'http://localhost:5000/api/auth/login',
+                `${BASE_URL}/api/auth/login`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

@@ -8,11 +8,12 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [count, setCount] = useState(0);
     const [quantities, setQuantities] = useState({});
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     const fetchCartItems = () => {
         if (!user) return; //ensure user
 
-        fetch(`http://localhost:5000/api/cart/${user.userID}`)
+        fetch(`${BASE_URL}/api/cart/${user.userID}`)
             .then((res) => res.json())
             .then((data) => {
                 setCartItems(data);
