@@ -81,7 +81,7 @@ app.delete('/api/cart/:productID', (req, res) => {
 
 //i have to create another endpoint to delete all Items related to userID
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
     res.send('Hello from Vercel backend!');
