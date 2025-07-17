@@ -87,6 +87,9 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
+module.exports = (req, res) => {
+    res.status(200).send("API working");
+};
 
 // process.env.PORT
 app.listen(PORT, () => {
