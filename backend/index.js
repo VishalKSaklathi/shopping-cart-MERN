@@ -1,9 +1,9 @@
-import db from '../db.mjs'
-import authRoutes from '../routes/authRoutes.mjs'
-import razorPayments from '../routes/razorPayments.mjs'
-import cookieParser from 'cookie-parser'
-import express from 'express';
-import cors from 'cors';
+const express = require('express');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const db = require('./db'); // assuming db.js
+const authRoutes = require('./authRoutes'); // assuming authRoutes.js
+const razorPayments = require('./razorPayments'); // assuming razorPayments.js
 
 // import bodyParser from 'body-parser';
 // const { json } = bodyParser;
@@ -85,10 +85,10 @@ app.get('/', (req, res) => {
 });
 //i have to create another endpoint to delete all Items related to userID
 
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 
-//process.env.PORT
-// app.listen(PORT, () => {
-//     console.log(`Server running on http://127.0.0.1:${PORT}`);
-// });
+// process.env.PORT
+app.listen(PORT, () => {
+    console.log(`Server running on http://127.0.0.1:${PORT}`);
+});

@@ -1,7 +1,7 @@
 
-import db from '../db.mjs'
-import express from 'express';
-import jwt from 'jsonwebtoken'
+const db = require('./db');
+const express = require('express');
+const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
@@ -103,4 +103,4 @@ router.post('/logout', (req, res) => {
     res.json({ message: 'Logged out' });
 })
 
-export default router;
+module.exports = router;

@@ -1,12 +1,12 @@
-import express from 'express';
-import Razorpay from 'razorpay';
-import fs from 'fs';
-import db from '../db.mjs';
-import dotenv from 'dotenv';
+const express = require('express');
+const Razorpay = require('razorpay');
+const fs = require('fs');
+const db = require('./db');
+const dotenv = require('dotenv');
 dotenv.config();
 
 //module for verification
-import { validateWebhookSignature } from 'razorpay/dist/utils/razorpay-utils.js';
+const { validateWebhookSignature } = require('razorpay/dist/utils/razorpay-utils.js');
 const router = express.Router();
 
 // Replace with your Razorpay credentials
@@ -124,4 +124,4 @@ router.post('/clear-cart', (req, res) => {
 // });
 // callback_url: 'http://localhost:3000/payment-success'
 
-export default router;
+module.exports = router;
