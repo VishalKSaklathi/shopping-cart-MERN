@@ -17,10 +17,10 @@ app.use(cors(
         credentials: true
     }
 ));
-app.options('*', cors({
-    origin: ["http://localhost:5173", "https://shopping-cart-frontend-kappa.vercel.app"],
-    credentials: true,
-}));
+// app.options('*', cors({
+//     origin: ["http://localhost:5173", "https://shopping-cart-frontend-kappa.vercel.app"],
+//     credentials: true,
+// }));
 
 app.use(express.json());
 app.use(cookieParser())
