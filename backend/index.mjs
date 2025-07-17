@@ -12,7 +12,7 @@ const app = express();
 app.use(cookieParser())
 app.use(cors(
     {
-        origin: "https://shopping-cart-frontend-kappa.vercel.app/",
+        origin: ["http://localhost:5173", "https://shopping-cart-frontend-kappa.vercel.app"],
         methods: ["POST", 'GET', 'PUT', 'DELETE'],
         credentials: true
     }
@@ -87,7 +87,7 @@ app.get('/', (req, res) => {
     res.send('Hello from Vercel backend!');
 });
 
-// //process.env.PORT
-// app.listen(PORT, () => {
-//     console.log(`Server running on http://127.0.0.1:${PORT}`);
-// });
+//process.env.PORT
+app.listen(PORT, () => {
+    console.log(`Server running on http://127.0.0.1:${PORT}`);
+});

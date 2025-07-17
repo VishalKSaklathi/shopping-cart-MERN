@@ -15,7 +15,7 @@ function SignUp() {
     const { setActiveTab } = useAuth();
     const [tempPassword, setTempPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
