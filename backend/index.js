@@ -19,6 +19,7 @@ app.use(cors(
     }
 ));
 app.use(express.json());
+app.options('*', cors());
 
 //login / signup hndling
 app.use('/api/auth', authRoutes);
