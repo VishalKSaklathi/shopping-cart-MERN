@@ -6,7 +6,6 @@ import { useCart } from '../context/CartContent';
 import { useAuth } from '../context/useAuth';
 import emptyCartImg from '../assets/empty_cart.png';
 import '../App.css'
-import { height } from '@fortawesome/free-solid-svg-icons/fa0';
 
 function Cart() {
     const { cartItems, quantities, setQuantities, fetchCartItems } = useCart();
@@ -20,7 +19,7 @@ function Cart() {
 
     // Update Quantity
     const handleUpdate = (id, newQty) => {
-        fetch(`http://localhost:5000/api/cart/${id}`, {
+        fetch(`https://shopping-cart-frontend-kappa.vercel.app/api/cart/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ quantity: newQty, userID: user.userID }),
