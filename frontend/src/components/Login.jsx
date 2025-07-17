@@ -31,8 +31,8 @@ function Login() {
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, pass }),
-                    credentials: 'include'
+                    credentials: 'include',
+                    body: JSON.stringify({ email, pass })
                 }
             );
             const data = await (res.headers.get('content-type')?.includes('application/json')
