@@ -1,7 +1,7 @@
 const express = require('express');
 const Razorpay = require('razorpay');
 const fs = require('fs');
-const db = require('./db');
+const db = require('../db');
 const dotenv = require('dotenv');
 dotenv.config();
 

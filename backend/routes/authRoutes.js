@@ -1,5 +1,5 @@
 
-const db = require('./db');
+const db = require('../db');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 

@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const db = require('./db'); // assuming db.js
-const authRoutes = require('./authRoutes'); // assuming authRoutes.js
-const razorPayments = require('./razorPayments'); // assuming razorPayments.js
+const authRoutes = require('./routes/authRoutes'); // assuming authRoutes.js
+const razorPayments = require('./routes/razorPayments'); // assuming razorPayments.js
 
 // import bodyParser from 'body-parser';
 // const { json } = bodyParser;
