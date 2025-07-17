@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors(
     {
-        origin: ["http://localhost:5173", "https://shopping-cart-frontend-kappa.vercel.app"],
+        origin: "https://shopping-cart-frontend-kappa.vercel.app",
         methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'],
         credentials: true
     }
