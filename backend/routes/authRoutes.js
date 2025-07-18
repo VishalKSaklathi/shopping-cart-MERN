@@ -10,7 +10,7 @@ router.post('/login', (req, res) => {
     const sql = `
     SELECT userID, userPass, userName, userphoneNo, userAddress, userEmail
     FROM users
-    WHERE userEmail = ?`;
+    WHERE userEmail = ? AND userPass = ?`;
 
     db.query(sql, [email, pass], (err, results) => {
         if (err) {
