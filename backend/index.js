@@ -5,7 +5,7 @@ const db = require('./db'); // assuming db.js
 const authRoutes = require('./routes/authRoutes'); // assuming authRoutes.js
 const razorPayments = require('./routes/razorPayments'); // assuming razorPayments.js
 const cartRoutes = require('./routes/cartRoutes'); // assuming cartRoutes.js
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 // import bodyParser from 'body-parser';
 // const { json } = bodyParser;
@@ -15,24 +15,20 @@ const app = express();
 const allowedOrigin = process.env.CLIENT_URL;
 
 app.use(cors({
-    origin: function (origin, callback) {
-        console.log('Origin attempting to access:', origin);
-        if (!origin || origin === allowedOrigin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: allowedOrigin,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-app.options('*', cors());
+app.options('*', cors({
+    origin: allowedOrigin,
+    credentials: true,
+}));
 
 app.use(express.json());
 app.use(cookieParser())
 
-//login / signup hndling
+//login / signup handling
 app.use('/api/auth', authRoutes);
 app.use('/api/payment', razorPayments);
 app.use('/api/cart', cartRoutes);
