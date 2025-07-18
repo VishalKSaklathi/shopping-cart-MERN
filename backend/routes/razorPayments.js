@@ -30,8 +30,8 @@ router.post('/create-order', async (req, res) => {
 
         // Save to TiDB
         const insertQuery = `
-      INSERT INTO orders (order_id, amount, currency, status)
-      VALUES (?, ?, ?, ?)
+    INSERT INTO orders (order_id, amount, currency, status)
+    VALUES (?, ?, ?, ?)
     `;
         await db.query(insertQuery, [order.id, order.amount, order.currency, 'created']);
 
@@ -58,7 +58,7 @@ router.post('/verify-payment', async (req, res) => {
         UPDATE orders
         SET status = ?, payment_id = ?
         WHERE order_id = ?
-      `;
+    `;
             await db.query(updateQuery, ['paid', razorpay_payment_id, razorpay_order_id]);
 
             console.log('✅ Payment verified and order updated');
