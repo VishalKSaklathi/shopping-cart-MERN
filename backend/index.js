@@ -1,19 +1,21 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+dotenv.config();
 const db = require('./db'); // assuming db.js
 const authRoutes = require('./routes/authRoutes'); // assuming authRoutes.js
 const razorPayments = require('./routes/razorPayments'); // assuming razorPayments.js
 const cartRoutes = require('./routes/cartRoutes'); // assuming cartRoutes.js
-import dotenv from 'dotenv';
-dotenv.config();
-// import bodyParser from 'body-parser';
-// const { json } = bodyParser;
+
+
+const app = express();
 
 const allowedOrigin = process.env.CLIENT_URL;
 
 app.use(cors({
     origin: function (origin, callback) {
+        console.log("Incoming Origin:", origin);
         if (!origin || origin === allowedOrigin) {
             callback(null, true);
         } else {
