@@ -43,7 +43,9 @@ function SignUp() {
         console.log('User created:', values)
         fetch(`${BASE_URL}/api/auth/signup`, { //API request to backend isn't working
             method: "POST",
+
             headers: { "Content-Type": "application/json" },
+            credentials: "include", // Include cookies in the request
             body: JSON.stringify(values)
         })
             .then((res) => res.json())

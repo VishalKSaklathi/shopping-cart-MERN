@@ -25,6 +25,7 @@ function SingleProductView() {
             fetch(`${BASE_URL}/api/cart`, { //API request to backend isn't working
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include",
                 body: JSON.stringify({
                     productID: productDetails.id,
                     userID: user.userID,

@@ -37,6 +37,7 @@ function Checkout() {
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({ amount, currency: 'INR', receipt: 'receipt#1', notes: {} })
         });
         const order = await response.json();
@@ -65,6 +66,7 @@ function Checkout() {
                     headers: {
                         'Content-Type': 'application/json'
                     },
+                    credentials: "include",
                     body: JSON.stringify({
                         razorpay_order_id: response.razorpay_order_id,
                         razorpay_payment_id: response.razorpay_payment_id,

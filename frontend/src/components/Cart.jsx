@@ -16,13 +16,14 @@ function Cart() {
 
     useEffect(() => {
         fetchCartItems();
-    }, []);
+    }, [fetchCartItems]);
 
     // Update Quantity
     const handleUpdate = (id, newQty) => {
         fetch(`${BASE_URL}/api/cart/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({ quantity: newQty, userID: user.userID }),
         })
             .then(res => res.json())
@@ -49,6 +50,7 @@ function Cart() {
     const handleRemove = (id) => {
         fetch(`${BASE_URL}/api/cart/${id}`, {
             method: "DELETE",
+            credentials: "include"
         })
             .then(res => res.json())
             .then((data) => {
