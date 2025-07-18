@@ -1,5 +1,4 @@
-// const dotenv = require('dotenv');
-// dotenv.config();
+
 const db = require('../db');
 const express = require('express');
 const jwt = require('jsonwebtoken');
@@ -83,9 +82,6 @@ router.post('/signup', (req, res) => {
 
 //check
 router.get('/check', (req, res) => {
-    //these are headers here 
-    // res.setHeader("Access-Control-Allow-Origin", process.env.CLIENT_URL);
-    // res.setHeader("Access-Control-Allow-Credentials", "true");
     const token = req.cookies.token;
 
     if (!token) {
