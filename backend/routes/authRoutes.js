@@ -27,7 +27,11 @@ router.post('/login', (req, res) => {
         }
         // generate & return a JWT here
         const token = jwt.sign({ userID: user.userID, userName: user.userName, userphoneNo: user.userphoneNo, userAddress: user.userAddress, userEmail: user.userEmail }, 'our-jsonwebtoken-secret-key', { expiresIn: '1d' });
-        res.cookie('token', token);
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None'
+        });
         return res.json({
             user: {
                 userID: user.userID,
