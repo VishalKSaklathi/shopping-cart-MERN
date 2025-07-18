@@ -82,6 +82,8 @@ router.post('/signup', (req, res) => {
 
 //check
 router.get('/check', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", process.env.CLIENT_URL);
+    res.setHeader("Access-Control-Allow-Credentials", "true");
     const token = req.cookies.token;
 
     if (!token) {
