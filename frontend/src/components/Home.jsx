@@ -2,11 +2,12 @@ import { Card, Container, Row, Col, Image, Button } from 'react-bootstrap';
 import '../Home.css';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
-import ScrollTimeline from './ScrollTimeline';
+import AllService from './AllService';
+import ProductGrid from './ProductGrid';
 function Home() {
     return (
         <>
-            <Container className="mt-4 thumbnail-container" fluid>
+            <Container className="mt-2 thumbnail-container" fluid>
                 <div className="animated-text">
                     <h2 className="headline">Welcome to <span style={{ color: '#f39c12' }}>Shopping Cart</span> </h2>
                     <p className="subtext">
@@ -53,8 +54,9 @@ function Home() {
                 </div> */}
             </Container>
             {/* <ScrollTimeline /> */}
-            <Container fluid>
-                <h2 className='headline-text mx-4'>Top Catogories</h2>
+            <AllService />
+            <Container fluid my={4} className="text-center">
+                <h2 className='headline-text mx-4'>Top Categories</h2>
                 <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4 mx-2">
                     {/* for Groceries */}
 
@@ -172,92 +174,7 @@ function Home() {
                     </Col>
                 </Row>
             </Container >
-            <Container fluid>
-                <h2 className='headline-text mx-4 mt-4'>Popular Catogories</h2>
-                <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4 mx-2">
-                    {/* for Groceries */}
-
-                    <Col md={6}>
-                        <Card className="Item-card text-white" style={{ width: '320px', height: '240px' }}>
-                            <div className="image-container">
-                                <Card.Img
-                                    src="https://plus.unsplash.com/premium_photo-1676963357751-8b0339f9e468?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="Card image"
-                                    height="250px"
-                                />
-                            </div>
-
-                            <Card.ImgOverlay className="Item-overlay d-flex flex-column justify-content-end">
-                                <div className="hover-text">
-                                    <Card.Text className='pb-2'>
-                                        Explore our grocery collection with fresh
-                                        produce, daily essentials like eggs and milk,
-                                        and pantry staples including beans and grains.
-                                    </Card.Text>
-                                </div>
-                                <Card.Title className="always-show">Groceries</Card.Title>
-                            </Card.ImgOverlay>
-                        </Card></Col>
-                    {/* For Beuty and fragnances */}
-                    <Col>
-                        <Card className="Item-card text-white" style={{ width: '320px', height: '240px' }}>
-                            <div className="image-container">
-                                <Card.Img
-                                    src="https://plus.unsplash.com/premium_photo-1720433639528-5d1ce620ae27?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="Card image"
-                                    height="250px"
-                                />
-                            </div>
-
-                            <Card.ImgOverlay className="Item-overlay d-flex flex-column justify-content-end">
-                                <div className="hover-text">
-                                    <Card.Text className='pb-2'>
-                                        Indulge in self-care with our exquisite beauty picks and enchanting fragrances.
-                                    </Card.Text>
-                                </div>
-                                <Card.Title className="always-show">Beauty & Fragnances</Card.Title>
-                            </Card.ImgOverlay>
-                        </Card>
-                    </Col>
-                    {/* Furnitures */}
-                    <Col>     <Card className="Item-card text-white" style={{ width: '320px', height: '240px' }}>
-                        <div className="image-container">
-                            <Card.Img
-                                src="https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?q=80&w=2106&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Card image"
-                                height="250px"
-                            />
-                        </div>
-
-                        <Card.ImgOverlay className="Item-overlay d-flex flex-column justify-content-end">
-                            <div className="hover-text">
-                                <Card.Text className='pb-2'>
-                                    Redefine comfort with stylish furniture built for your space
-                                </Card.Text>
-                            </div>
-                            <Card.Title className="always-show">Furnitures</Card.Title>
-                        </Card.ImgOverlay>
-                    </Card></Col>
-                    <Col>     <Card className="Item-card text-white" style={{ width: '320px', height: '240px' }}>
-                        <div className="image-container">
-                            <Card.Img
-                                src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Card image"
-                                height="250px"
-                            />
-                        </div>
-
-                        <Card.ImgOverlay className="Item-overlay d-flex flex-column justify-content-end">
-                            <div className="hover-text">
-                                <Card.Text className='pb-2'>
-                                    From daily must-haves to rare gems - browse our versatile collection!
-                                </Card.Text>
-                            </div>
-                            <Card.Title className="always-show">Others</Card.Title>
-                        </Card.ImgOverlay>
-                    </Card></Col>
-                </Row>
-            </Container>
+            <ProductGrid />
             <Footer />
         </>
 

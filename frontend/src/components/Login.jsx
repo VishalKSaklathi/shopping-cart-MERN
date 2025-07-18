@@ -80,10 +80,10 @@ function Login() {
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit" className="w-100">
+                <Button style={{ backgroundColor: '#34495e' }} type="submit" className="w-100">
                     Login
                 </Button>
-                <span >Aren't you registered yet? <Link to="/signup"> Sign Up</Link></span>
+                {/* <span >Aren't you registered yet? <Link to="/signup"> Sign Up</Link></span> */}
             </Form>
         </Container>
     );

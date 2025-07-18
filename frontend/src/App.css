@@ -90,7 +90,8 @@
 .animated-bg {
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(-45deg, #f4f4f4, #f3ffd8, #e0e063, #aba92f);
+    /* background: linear-gradient(-45deg, #f4f4f4, #f3ffd8, #e0e063, #aba92f); */
+    background-color: #f0efef;
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
 }

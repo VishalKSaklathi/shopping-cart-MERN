@@ -123,7 +123,7 @@ function SignUp() {
                     />
                 </Form.Group>
 
-                <Button variant="success" type="submit" className="w-100">
+                <Button style={{ backgroundColor: '#34495e' }} type="submit" className="w-100">
                     Sign Up
                 </Button>
             </Form>

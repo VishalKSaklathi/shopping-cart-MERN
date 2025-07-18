@@ -25,20 +25,19 @@ router.post('/create-order', async (req, res) => {
             receipt,
             notes,
         };
-
+        console.log(options);
         const order = await razorpay.orders.create(options);
-
+        console.log(order);
         // Save to TiDB
         const insertQuery = `
     INSERT INTO orders (order_id, amount, currency, status)
     VALUES (?, ?, ?, ?)
     `;
         await db.query(insertQuery, [order.id, order.amount, order.currency, 'created']);
-
         res.json(order);
     } catch (error) {
-        console.error('Error creating order:', error);
-        res.status(500).send('Error creating order');
+        console.error('Error creating order:', error.message);
+        res.status(500).json({ error: 'Error creating order' });
     }
 });
 
@@ -56,15 +55,15 @@ router.post('/verify-payment', async (req, res) => {
             // Update order status in DB
             const updateQuery = `
         UPDATE orders
-        SET status = ?, payment_id = ?
+        SET status = ?
         WHERE order_id = ?
     `;
             await db.query(updateQuery, ['paid', razorpay_payment_id, razorpay_order_id]);
 
-            console.log('✅ Payment verified and order updated');
+            console.log('Payment verified and order updated');
             res.status(200).json({ status: 'ok' });
         } else {
-            console.warn('❌ Invalid payment signature');
+            console.warn('Invalid payment signature');
             res.status(400).json({ status: 'verification_failed' });
         }
     } catch (error) {

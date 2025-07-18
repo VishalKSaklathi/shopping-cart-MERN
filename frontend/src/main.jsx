@@ -10,7 +10,7 @@ import Cart from './components/Cart.jsx'
 import SingleProductView from './components/SingleProductView.jsx'
 import Checkout from './components/Checkout.jsx'
 import SignUp from './components/SignUp.jsx'
-import Card from './components/Auth.jsx'
+import AuthCard from './components/Auth.jsx'
 import Profile from './components/Profile.jsx'
 import SearchView from './components/SearchView.jsx'
 import PaymentSuccess from './components/PaymentSuccess.jsx'
@@ -22,7 +22,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route path='' element={<Home />} />
-      <Route path='login' element={<Card />} />
+      <Route path='login' element={<AuthCard />} />
       <Route path='signup' element={<SignUp />} />
       <Route path='profile' element={<Profile />} />
       <Route path='products' element={<Products />} />

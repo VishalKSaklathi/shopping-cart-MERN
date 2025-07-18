@@ -61,28 +61,34 @@ function SingleProductView() {
             <h5 className="mt-2">Loading...</h5>
         </div>) :
         (
-            <Container mt="4">
+            <Container mt="4" className="py-2">
                 <Row className="mt-4">
                     <Col md={5}>
-                        <Card className="p-3 shadow-sm bg-light">
-                            <Card.Img
-                                variant="top"
-                                src={productDetails.thumbnail}
-                                alt={productDetails.title}
-                                style={{ width: '100%', height: '250px', objectFit: 'contain' }}
-                            />
-                            <Card.Body>
-                                <Card.Title>{productDetails.title}
-                                    <Badge bg="success" className="ms-2">⭐{productDetails.rating}</Badge>
-                                </Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">{productDetails.brand}</Card.Subtitle>
-                                <Card.Text>
-                                    <strong>₹{Math.ceil(productDetails.price * 80)}</strong> &nbsp;
-                                    <small className="text-muted">({productDetails.discountPercentage}% off)</small><br />
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Container className="my-4 p-4 border rounded shadow-sm bg-light">
+                        <Container className="mt-3 p-4 border-end" style={{ borderRight: '2px solid #dee2e6' }}>
+                            {/* Product Card Image and Info */}
+                            <div className="mb-4 pb-3 border-bottom">
+                                <Card className=" border-0">
+                                    <Card.Img
+                                        variant="top"
+                                        src={productDetails.thumbnail}
+                                        alt={productDetails.title}
+                                        style={{ width: '100%', height: '250px', objectFit: 'contain' }}
+                                    />
+                                    <Card.Body className="px-0">
+                                        <Card.Title>
+                                            {productDetails.title}
+                                            <Badge bg="success" className="ms-2">⭐{productDetails.rating}</Badge>
+                                        </Card.Title>
+                                        <Card.Subtitle className="mb-2 text-muted">{productDetails.brand}</Card.Subtitle>
+                                        <Card.Text>
+                                            <strong>₹{Math.ceil(productDetails.price * 80)}</strong> &nbsp;
+                                            <small className="text-muted">({productDetails.discountPercentage}% off)</small><br />
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </div>
+
+                            {/* Add to Cart Form */}
                             <Form>
                                 <Form.Group className="mb-3" controlId="formQuantity">
                                     <Form.Label className="fw-bold">Quantity</Form.Label>

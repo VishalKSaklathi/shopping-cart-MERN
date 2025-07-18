@@ -1,6 +1,7 @@
 require('dotenv').config();
 // backend/db.js
 const mysql = require('mysql2');
+const util = require('util');
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -11,7 +12,7 @@ const db = mysql.createConnection({
         rejectUnauthorized: true
     }
 });
-
+db.query = util.promisify(db.query);
 db.connect(err => {
     if (err) {
         console.error(' DB connection error:', err.message);

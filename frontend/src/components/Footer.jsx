@@ -15,8 +15,8 @@ function Footer() {
             }}
         >
             © {new Date().getFullYear()} Ultimez Technology — All rights reserved.
-            <hr />
-            Developed By Vishal
+
+            | Developed By Vishal
         </div>
     );
 }
