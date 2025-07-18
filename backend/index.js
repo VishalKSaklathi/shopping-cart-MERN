@@ -10,17 +10,22 @@ const cartRoutes = require('./routes/cartRoutes'); // assuming cartRoutes.js
 
 const app = express();
 
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://shopping-cart-frontend-kappa.vercel.app"
+];
 app.use(cors({
-    origin: 'https://shopping-cart-frontend-kappa.vercel.app',
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
-// app.options('*', cors({
-//     origin: ["http://localhost:5173", "https://shopping-cart-frontend-kappa.vercel.app"],
-//     credentials: true,
-// }));
 
 app.use(express.json());
 app.use(cookieParser())
