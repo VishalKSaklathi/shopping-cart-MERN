@@ -5,18 +5,16 @@ const db = require('./db'); // assuming db.js
 const authRoutes = require('./routes/authRoutes'); // assuming authRoutes.js
 const razorPayments = require('./routes/razorPayments'); // assuming razorPayments.js
 const cartRoutes = require('./routes/cartRoutes'); // assuming cartRoutes.js
+import dotenv from 'dotenv';
+dotenv.config();
 // import bodyParser from 'body-parser';
 // const { json } = bodyParser;
 
-const app = express();
+const allowedOrigin = process.env.CLIENT_URL;
 
-const allowedOrigins = [
-    "http://localhost:5173",
-    "https://shopping-cart-frontend-kappa.vercel.app"
-];
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
+        if (!origin || origin === allowedOrigin) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
