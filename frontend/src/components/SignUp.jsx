@@ -127,6 +127,7 @@ function SignUp() {
                     Sign Up
                 </Button>
             </Form>
+
         </Container>
     );
 }

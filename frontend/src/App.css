@@ -198,6 +198,20 @@ html {
     }
 }
 
+@media (max-width: 576px) {
+    .navbar {
+        min-height: 70px;
+        /* or use height: 70px */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+        /* optional for better mobile spacing */
+    }
+}
+
 .container {
     max-width: 960px;
 }

@@ -138,7 +138,10 @@
         text-align: left;
     }
 
-    .animated-text,
+    .animated-text {
+        /* Add any desktop-specific styles here if needed */
+    }
+
     .thumbnail-img {
         flex: 1;
         margin: 25px;
@@ -147,5 +150,19 @@
     .thumbnail-img {
         max-width: 50%;
         margin-top: 0;
+    }
+}
+
+/* Hide hover-text initially for mobile */
+@media (max-width: 576px) {
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .scroll-reveal.reveal-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { Card, Container, Row, Col, Image, Button } from 'react-bootstrap';
 import '../Home.css';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,26 @@ import Footer from './Footer';
 import AllService from './AllService';
 import ProductGrid from './ProductGrid';
 function Home() {
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                    }
+                });
+            },
+            {
+                threshold: 0.2,
+            }
+        );
+
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach(el => observer.observe(el));
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <>
             <Container className="mt-2 thumbnail-container" fluid>
@@ -16,7 +37,6 @@ function Home() {
                         }}>one-stop</span> platform for quality products at unbeatable prices
                     </p>
                 </div>
-
                 <Image
                     src="https://deerdesigner.com/wp-content/uploads/2024/05/Article-34-ecommerce-design-01.png.webp"
                     thumbnail
@@ -55,7 +75,7 @@ function Home() {
             </Container>
             {/* <ScrollTimeline /> */}
             <AllService />
-            <Container fluid my={4} className="text-center">
+            <Container fluid my={2} className="text-center">
                 <h2 className='headline-text mx-4'>Top Categories</h2>
                 <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4 mx-2">
                     {/* for Groceries */}
@@ -78,7 +98,7 @@ function Home() {
                                 </div>
 
                                 <Card.ImgOverlay className="Item-overlay d-flex flex-column justify-content-end">
-                                    <div className="hover-text">
+                                    <div className="hover-text scroll-reveal">
                                         <Card.Text className='pb-2'>
                                             Explore our grocery collection with fresh
                                             produce, daily essentials like eggs and milk,
@@ -108,7 +128,7 @@ function Home() {
                                 </div>
 
                                 <Card.ImgOverlay className="Item-overlay d-flex flex-column justify-content-end">
-                                    <div className="hover-text">
+                                    <div className="hover-text scroll-reveal">
                                         <Card.Text className='pb-2'>
                                             Indulge in self-care with our exquisite beauty picks and enchanting fragrances.
                                         </Card.Text>
@@ -136,7 +156,7 @@ function Home() {
 
                                 <Card.ImgOverlay
                                     className="Item-overlay d-flex flex-column justify-content-end">
-                                    <div className="hover-text">
+                                    <div className="hover-text scroll-reveal">
                                         <Card.Text className='pb-2'>
                                             Redefine comfort with stylish furniture built for your space
                                         </Card.Text>
@@ -152,7 +172,7 @@ function Home() {
                             state={{ catg: '' }}
                             style={{ textDecoration: 'none' }}
                         ><Card className="Item-card text-white" style={{ width: '320px', height: '240px' }}>
-                                <div className="image-container">
+                                <div className="image-container ">
                                     <Card.Img
                                         src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                         alt="Card image"
@@ -162,7 +182,7 @@ function Home() {
 
                                 <Card.ImgOverlay
                                     className="Item-overlay d-flex flex-column justify-content-end">
-                                    <div className="hover-text">
+                                    <div className="hover-text scroll-reveal">
                                         <Card.Text className='pb-2'>
                                             From daily must-haves to rare gems – browse our versatile collection!
                                         </Card.Text>
@@ -177,7 +197,6 @@ function Home() {
             <ProductGrid />
             <Footer />
         </>
-
     );
 }
 

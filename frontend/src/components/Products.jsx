@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Item from './Item';
 import Filter from './Filter';
+import Footer from './Footer';
 import { Spinner, Row, Col, Form, Container } from 'react-bootstrap/';
 import { useLocation } from 'react-router-dom';
 
@@ -77,6 +78,7 @@ function Products() {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </div>
     )
 }
