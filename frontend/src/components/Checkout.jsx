@@ -135,13 +135,14 @@ function Checkout() {
                                 <span className="text-muted">₹{item.price * item.quantity}</span>
                             </li>
                         ))}
-                        {/* <li className="list-group-item d-flex justify-content-between bg-light">
+                        <li className="list-group-item d-flex justify-content-between bg-light">
                             <div className="text-success">
-                                <h6 className="my-0">Promo code</h6>
-                                <small>DISCOUNT</small>
+                                <h6 className="my-0">DISCOUNT
+                                    (−10%)</h6>
+                                {/* <small>DISCOUNT</small> */}
                             </div>
-                            <span className="text-success">−10%</span>
-                        </li> */}
+                            <span className="text-success">−₹{(amount * 0.1).toFixed(2)}</span>
+                        </li>
                         <li className="list-group-item d-flex justify-content-between">
                             <span>Total</span>
                             <strong>₹{amount}</strong>
