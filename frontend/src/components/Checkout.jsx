@@ -108,8 +108,8 @@ function Checkout() {
     }
     //handle amount
     useEffect(() => {
-        const amount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
+        let amount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        amount = amount - (amount * 0.1); // Assuming a 10% discount
         setAmount(amount);
     }, [cartItems]);
     return (
