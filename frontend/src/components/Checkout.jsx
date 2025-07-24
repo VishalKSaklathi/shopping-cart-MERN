@@ -12,11 +12,11 @@ function Checkout() {
     const { user } = useAuth();
     const [amount, setAmount] = useState(0);
     const [formData, setFormData] = useState({
-        firstName: user?.userName || '',
+        firstName: user?.name || '',
         lastName: '',
-        phone: user?.userphoneNo || '',
-        email: user?.userEmail || '',
-        address: user?.userAddress || '',
+        phone: user?.phone || '',
+        email: user?.email || '',
+        address: user?.address || '',
         state: '',
         district: '',
         zip: ''
@@ -46,7 +46,7 @@ function Checkout() {
             key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Replace with your Razorpay key_id
             amount: order.amount,
             currency: order.currency,
-            name: 'Your Company Name',
+            name: 'Shopping Cart',
             description: 'Test Transaction',
             order_id: order.id, // This is the order_id created in the backend
             callback_url: `${CLIENT_URL}/payment-success`, // Your success URL
@@ -59,7 +59,7 @@ function Checkout() {
                 color: '#F37254'
             },
             handler: function (response) {
-                // console.log("Payment success:", response);
+                console.log("Payment success:", response);
                 // window.location.href = '/payment-success';  // React route
                 fetch(`${BASE_URL}/api/payment/verify-payment`, {
                     method: 'POST',
@@ -74,6 +74,7 @@ function Checkout() {
                     })
                 }).then(res => res.json())
                     .then(data => {
+                        console.log('Payment verification response:', data);
                         if (data.status === 'ok') {
                             //i have to call a functin ar something taht directs to backend
                             fetch(`${BASE_URL}/api/payment/clear-cart`, {
@@ -82,7 +83,7 @@ function Checkout() {
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify({ userID: user.userID })
+                                body: JSON.stringify({ userID: user._id })
                             }).then(response => {
                                 if (!response.ok) {
                                     throw new Error('Failed to clear cart');

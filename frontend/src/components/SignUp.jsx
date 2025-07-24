@@ -19,9 +19,7 @@ function SignUp() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
         const newValue = name === 'phone' ? (value === '' ? 0 : Number(value)) : value;
-
         setValues({ ...values, [name]: newValue });
     }
 
@@ -40,18 +38,17 @@ function SignUp() {
             return;
         }
         // Simulate user creation
-        console.log('User created:', values)
         fetch(`${BASE_URL}/api/auth/signup`, { //API request to backend isn't working
             method: "POST",
-
             headers: { "Content-Type": "application/json" },
             credentials: "include", // Include cookies in the request
             body: JSON.stringify(values)
         })
             .then((res) => res.json())
             .then(() => {
+                console.log("User created successfully");
                 setActiveTab('login');
-            }).catch((err) => console.error("Sign Up", err));
+            }).catch((err) => console.error("Sign Up:", err));
         // Redirect to login after signup
     };
 

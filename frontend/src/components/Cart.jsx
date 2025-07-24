@@ -24,7 +24,7 @@ function Cart() {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
-            body: JSON.stringify({ quantity: newQty, userID: user.userID }),
+            body: JSON.stringify({ quantity: newQty, userID: user._id }),
         })
             .then(res => res.json())
             .then(() => {
@@ -50,6 +50,8 @@ function Cart() {
     const handleRemove = (id) => {
         fetch(`${BASE_URL}/api/cart/${id}`, {
             method: "DELETE",
+            body: JSON.stringify({ userID: user._id }),
+            headers: { "Content-Type": "application/json" },
             credentials: "include"
         })
             .then(res => res.json())
@@ -65,7 +67,8 @@ function Cart() {
     // };
 
     useEffect(() => {
-        const amount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        const itemsArray = Array.isArray(cartItems) ? cartItems : (cartItems ? [cartItems] : []);
+        const amount = itemsArray.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
         setTotalAmount(amount);
     }, [cartItems]);

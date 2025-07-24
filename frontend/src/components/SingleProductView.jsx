@@ -28,7 +28,7 @@ function SingleProductView() {
                 credentials: "include",
                 body: JSON.stringify({
                     productID: productDetails.id,
-                    userID: user.userID,
+                    userID: user._id,
                     title: productDetails.title,
                     price: Math.ceil(productDetails.price * 80),
                     quantity,

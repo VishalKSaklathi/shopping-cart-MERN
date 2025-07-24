@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const db = require('./db'); // assuming db.js
+const db = require('./db'); // importing mongoDC connection
 const authRoutes = require('./routes/authRoutes'); // assuming authRoutes.js
 const razorPayments = require('./routes/razorPayments'); // assuming razorPayments.js
 const cartRoutes = require('./routes/cartRoutes'); // assuming cartRoutes.js
@@ -11,6 +11,7 @@ dotenv.config();
 // const { json } = bodyParser;
 
 const app = express();
+db();
 
 const allowedOrigin = process.env.CLIENT_URL;
 

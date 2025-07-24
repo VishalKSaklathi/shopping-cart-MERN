@@ -12,28 +12,17 @@ export const CartProvider = ({ children }) => {
 
     const fetchCartItems = () => {
         if (!user) return; //ensure user
-
-        fetch(`${BASE_URL}/api/cart/${user.userID}`)
+        fetch(`${BASE_URL}/api/cart/${user._id}`)
             .then((res) => res.json())
             .then((data) => {
                 setCartItems(data);
                 // To Set quantities in the input field of every cart element
+                // console.log("Cart Items:", data);
                 const qtyMap = {};
                 data.forEach(item => qtyMap[item.productID] = item.quantity);
                 setQuantities(qtyMap);
             });
     };
-    // const fetchCartItems = () => {
-    //     fetch("http://localhost:5000/api/cart")
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             setCartItems(data);
-    //             // Set default quantities
-    //             const qtyMap = {};
-    //             data.forEach(item => qtyMap[item.productID] = item.quantity);
-    //             setQuantities(qtyMap);
-    //         });
-    // };
 
     useEffect(() => {
         if (user && user.userID) {

@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/useAuth'
 
 function Login() {
-    const { setUser } = useAuth();
+    const { setUser, setIsAuth } = useAuth();
     const [values, setValues] = useState({ email: '', pass: '' });
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -43,6 +43,7 @@ function Login() {
                 throw new Error(data.message || 'Login failed');
             }
             setUser(data.user);
+            setIsAuth(true);
             console.log('Current User:', data)
             if (data) {
                 navigate('/');

@@ -1,8 +1,9 @@
-import React, { createContext, useState, useEffect, Children } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
+    const [isAuth, setIsAuth] = useState(false);
     const [user, setUser] = useState(null);
     const [activeTab, setActiveTab] = useState('login');
     // const [loading, setLoading] = useState(true);
@@ -17,7 +18,9 @@ export const AuthProvider = ({ children }) => {
                 });
                 if (res.ok) {
                     const data = await res.json();
+                    console.log('Auth check response:', data);
                     setUser(data.user);
+                    setIsAuth(true);
                 } else {
                     setUser(null);
                 }
@@ -43,9 +46,11 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, setUser, logout, isAuth: !!user, activeTab, setActiveTab }}>
+        <AuthContext.Provider value={{ user, setUser, isAuth, setIsAuth, activeTab, setActiveTab, logout }}>
             {children}
         </AuthContext.Provider>
     );
+};
 
-}
+export { AuthContext, AuthProvider };
+export default AuthProvider;
