@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useCart } from '../context/CartContent';
+import { useCart } from '../context/useCart';
 import { useAuth } from '../context/useAuth';
 import {
     Container, Row, Col, Form, Button, Card, InputGroup, Badge,

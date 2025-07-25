@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState, useEffect, Children } from 'react';
+import React, { createContext, useState, useEffect, useCallback, Children } from 'react';
 import { useAuth } from './useAuth'
 
-const CartContext = createContext();
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const { user } = useAuth();
@@ -10,8 +10,8 @@ export const CartProvider = ({ children }) => {
     const [quantities, setQuantities] = useState({});
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-    const fetchCartItems = () => {
-        if (!user) return; //ensure user
+    const fetchCartItems = useCallback(() => {
+        if (!user) return;
         fetch(`${BASE_URL}/api/cart/${user._id}`)
             .then((res) => res.json())
             .then((data) => {
@@ -22,17 +22,17 @@ export const CartProvider = ({ children }) => {
                 data.forEach(item => qtyMap[item.productID] = item.quantity);
                 setQuantities(qtyMap);
             });
-    };
+    }, [BASE_URL, user]);
 
     useEffect(() => {
-        if (user && user.userID) {
+        if (user && user._id) {
             fetchCartItems();
         }
-    }, [user]);
+    }, [user, fetchCartItems]);
 
     useEffect(() => {
         setCount(cartItems.length);
-    }, [count, cartItems]);
+    }, [cartItems]);
 
     return (
         <CartContext.Provider value={{ cartItems, setCartItems, count, quantities, setQuantities, fetchCartItems }}>
@@ -40,5 +40,3 @@ export const CartProvider = ({ children }) => {
         </CartContext.Provider>
     );
 }
-// custom hook for usecart
-export const useCart = () => useContext(CartContext);

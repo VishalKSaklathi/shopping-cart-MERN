@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaShoppingCart } from 'react-icons/fa';
-import { useCart } from '../context/CartContent';
+import { useCart } from '../context/useCart';
 import { useSearch } from '../context/useSearch';
 import { useAuth } from '../context/useAuth';
 import { useNavigate } from 'react-router-dom';
@@ -53,21 +53,6 @@ function NavBar({ expanded, setExpanded }) {
                             :
                             <Nav.Link href="/profile" className='color-text'>Profile</Nav.Link>
                         }
-                        {/* <NavDropdown title="Products" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action3">
-                                Shrits
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4">
-                                Pants
-                            </NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action5">
-                                Watches
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href="#" disabled>
-                            Link
-                        </Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
                 <div className='d-flex align-item-center'>

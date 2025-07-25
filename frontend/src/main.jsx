@@ -14,7 +14,7 @@ import AuthCard from './components/Auth.jsx'
 import Profile from './components/Profile.jsx'
 import SearchView from './components/SearchView.jsx'
 import PaymentSuccess from './components/PaymentSuccess.jsx'
-import { CartProvider } from './context/CartContent.jsx'
+import { CartProvider } from './context/CartContext.jsx'
 import { SearchProvider } from './context/searchContext.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 

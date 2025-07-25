@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { FaShoppingCart, FaTrash } from 'react-icons/fa';
-import { useCart } from '../context/CartContent';
+import { useCart } from '../context/useCart';
 import { useAuth } from '../context/useAuth';
 import emptyCartImg from '../assets/empty_cart.png';
 import '../App.css'

@@ -2,7 +2,7 @@ import '../App.css'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Container, Card, Button, Form, Row, Col, Spinner, Badge } from 'react-bootstrap';
-import { useCart } from '../context/CartContent';
+import { useCart } from '../context/useCart';
 import { useAuth } from '../context/useAuth'
 import { useNavigate } from 'react-router-dom';
 
